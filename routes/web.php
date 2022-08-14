@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('backend.app');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('login', [AuthController::class, 'showFormLogin'])->name('auth.form');
+    Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/', function () {
+           dd(\Illuminate\Support\Facades\Auth::guard('admin')->user());
+        })->name('test');
+        Route::get('logout', [AuthController::class, 'logout']);
+    });
 });
