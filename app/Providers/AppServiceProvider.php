@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\StorageService;
+use App\Services\StorageServiceImpl;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

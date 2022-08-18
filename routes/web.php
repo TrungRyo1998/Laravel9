@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showFormLogin'])->name('auth.form');
