@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\StorageService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
